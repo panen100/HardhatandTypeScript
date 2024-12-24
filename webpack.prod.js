@@ -12,4 +12,4 @@ module.exports = merge(baseConfig, {
             JSON.stringify(process.env.DEBUG),
         }),
     ],
-})
+}) 
