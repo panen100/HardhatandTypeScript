@@ -41,11 +41,30 @@ async function getContract(){
     const contract = new ethers.Contract(
         process.env.CONTRACT_ADDRESS,
         [
-            "function hello() pure public returns (string memory)"
+            "function count() public",
+            "function getCount() public view returns(uint)",
         ],
-        provider
+        await provider.getSigner(),
     )
-    document.body.innerHTML = await contract.hello();
+
+    const counter = document.createElement('div');
+    async function getCount() {
+        counter.innerHTML = await contract.getCount();
+    }
+    getCount();
+    async function setCount() {
+        return await contract.count();
+    }
+    const btn = document.createElement("button");
+    btn.innerHTML = "increment";
+    btn.onclick = async function (){
+        const tx = await contract.count();
+        await tx.wait();
+        getCount();
+    }
+
+    document.body.appendChild(counter);
+    document.body.appendChild(btn);
 }
 
 async function main(){
