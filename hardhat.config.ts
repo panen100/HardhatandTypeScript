@@ -13,3 +13,6 @@ const config:Config = {
 };
 
 export default config;
+
+//https://eth-sepolia.g.alchemy.com/v2/9gMJU4MC1yQo7EUgk_NJgqgcVQY9V5B4
+//https://avax-fuji.g.alchemy.com/v2/9gMJU4MC1yQo7EUgk_NJgqgcVQY9V5B4

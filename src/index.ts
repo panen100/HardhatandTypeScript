@@ -1,4 +1,5 @@
 import {ethers} from "ethers";
+import { abi } from '../artifacts/contracts/Counter.sol/Counter.json';
 
 // 1、判断浏览器环境中是否有ethereum全局变量
 function getEth(){
@@ -40,10 +41,7 @@ async function getContract(){
     const provider = new ethers.BrowserProvider(getEth());
     const contract = new ethers.Contract(
         process.env.CONTRACT_ADDRESS,
-        [
-            "function count() public",
-            "function getCount() public view returns(uint)",
-        ],
+        abi,
         await provider.getSigner(),
     )
 
@@ -52,16 +50,16 @@ async function getContract(){
         counter.innerHTML = await contract.getCount();
     }
     getCount();
-    async function setCount() {
-        return await contract.count();
-    }
+
     const btn = document.createElement("button");
     btn.innerHTML = "increment";
     btn.onclick = async function (){
-        const tx = await contract.count();
-        await tx.wait();
-        getCount();
+        await contract.count();
     }
+
+    contract.on(contract.filters.CounterInc(), async function({args}) {
+        counter.innerHTML = args.toString() || await contract.getCount();
+    })
 
     document.body.appendChild(counter);
     document.body.appendChild(btn);
