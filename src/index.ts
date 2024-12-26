@@ -58,7 +58,7 @@ async function getContract(){
     }
 
     contract.on(contract.filters.CounterInc(), async function({args}) {
-        counter.innerHTML = args.toString() || await contract.getCount();
+        counter.innerHTML = args[0].toString() || await contract.getCount();
     })
 
     document.body.appendChild(counter);
