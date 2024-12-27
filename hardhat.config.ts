@@ -1,5 +1,6 @@
 import "@nomicfoundation/hardhat-toolbox";
-import "@nomicfoundation/hardhat-ethers"
+import "@nomicfoundation/hardhat-ethers";
+import "hardhat-gas-reporter";
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -12,12 +13,23 @@ const config:Config = {
     hardhat:{
       chainId:31337
     },
-  sepolia_eth:{
+  avalanche_fuji_avax:{
     url:`https://avax-fuji.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
+    //accounts:[process.env.PRIVATE_KEY]
+    },
+  sepolia_eth:{
+    url:`https://eth-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_API_KEY}`,
     accounts:[process.env.PRIVATE_KEY]
+    }
+  },
+  gasReporter:{
+    enabled:true
+  },
+  etherscan:{
+    apiKey:{
+      sepolia:process.env.ETHERSCAN_API
+    }
   }
-  } 
 };
-
 export default config;
 

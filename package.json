@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-
-  "scripts":{
-    "dev":"webpack serve --config webpack.dev.js",
-    "build":"webpack --config webpack.prod.js",
+  "scripts": {
+    "dev": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "deploy:local": "npx hardhat run scripts/counter-deploy.ts --network localhost"
   },
-
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
     "@nomicfoundation/hardhat-ethers": "^3.0.0",
@@ -17,7 +15,7 @@
     "@nomicfoundation/hardhat-ignition-ethers": "^0.15.0",
     "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
-    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.12",
     "@typechain/ethers-v6": "^0.5.0",
     "@typechain/hardhat": "^9.0.0",
     "@types/mocha": "^10.0.10",
@@ -25,7 +23,7 @@
     "dotenv": "^16.4.7",
     "ethers": "^6.4.0",
     "hardhat": "^2.22.17",
-    "hardhat-gas-reporter": "^1.0.8",
+    "hardhat-gas-reporter": "^2.2.2",
     "html-webpack-plugin": "^5.6.3",
     "solidity-coverage": "^0.8.0",
     "ts-loader": "^9.5.1",

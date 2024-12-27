@@ -1,14 +1,14 @@
 import "@nomicfoundation/hardhat-ethers";
 
-import {ethers} from "hardhat";
-import {expect} from "chai";
+import { ethers } from "hardhat";
+import { expect } from "chai";
 
-describe("Hello World", () => {
-    it("should get the hello world", async () => {
+describe("Hello World",() => {
+    it("should get the hello world",async () => {
         const HW = await ethers.getContractFactory("HelloWorld");
-        const hw = await HW.deploy();
-        await hw.waitForDeployment();
+        const hello = await HW.deploy();
+        await hello.waitForDeployment;
 
-        expect(await hw.hello()).to.equal("Hello, World!");
+        expect(await hello.hello()).to.equal("Hello, World");
     });
-});
+} );
